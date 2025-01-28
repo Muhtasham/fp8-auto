@@ -2,6 +2,32 @@
 
 A Work in Progress PyTorch implementation for converting between bfloat16 and FP8 formats, using **only native PyTorch and NumPy**.
 
+## Project Goals
+
+This project aims to:
+
+1. **Convert Tensors**: 
+   - bfloat16 -> FP8 (stored as uint8) -> back to bfloat16
+   - Using pure bit manipulation (no .to(torch.uint8))
+   - N-bit mantissa support (configurable)
+
+2. **Implement Stochastic Rounding**:
+   - Following [Higham's approach](https://nhigham.com/2020/07/07/what-is-stochastic-rounding/)
+   - Preserve statistical properties
+   - Mean preservation over multiple iterations
+
+3. **Handle Edge Cases**:
+   - NaN, Infinity
+   - Denormal numbers
+   - Zero values
+   - Sign preservation
+
+4. **Comprehensive Testing**:
+   - Statistical property validation
+   - Edge case verification
+   - Large-scale iteration tests
+
+
 > 🚀 **Good Start, But Beware**: While the basic implementation is in place, there are critical issues with statistical properties and sign bit handling. Perfect for learning about FP8 and numerical methods, but not yet production-ready!
 
 ## Current Status: Help Needed! 🚨
@@ -84,3 +110,4 @@ We especially need help with:
 - Share your expertise
 
 Let's make this work together! 🚀
+
